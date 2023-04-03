@@ -68,11 +68,10 @@ a{
 }
 .top_circle{
   position: absolute;
-  width: 947px;
-  height: 947px;
-  left: -852px;
-  top: -525px;
-  
+  width: 447px;
+  height: 447px;
+  right: 70%;
+  top:-90%;
   background: #79ADDC;
   opacity: 0.3;
   filter: blur(150px);
