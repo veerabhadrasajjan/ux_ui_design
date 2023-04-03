@@ -62,6 +62,8 @@ function App() {
             </div>
           </Container>
         </Navbar>
+        <div className='top_circle'></div>
+        <div className='top_right_circle'></div>
       </header>
       <div className='app-body'>
         <div className='top_box'>

@@ -14,10 +14,10 @@ body {
   /* justify-content: center; */
   /* font-size: calc(10px + 2vmin); */
   color: white;
+  position: relative;
 }
 
 .app-body {
-  
   position: relative;
   overflow: hidden;
 }
@@ -65,6 +65,27 @@ a{
   opacity: 0.2;
   filter: blur(250px);
   transform: rotate(30deg);
+}
+.top_circle{
+  position: absolute;
+  width: 947px;
+  height: 947px;
+  left: -852px;
+  top: -525px;
+  
+  background: #79ADDC;
+  opacity: 0.3;
+  filter: blur(150px);
+}
+.top_right_circle{
+  position: absolute;
+width: 400px;
+height: 200px;
+left: 70%;
+top: -90%;
+background: #D0FD3E;
+opacity: 0.3;
+filter: blur(150px);
 }
 .banner {
   margin: 0px 40px;
