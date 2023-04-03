@@ -1,5 +1,7 @@
 
 import './App.css';
+import React, { useState } from 'react';
+import { Dropdown } from 'react-bootstrap';
 import banner from './images/bg_body.png';
 import logo from './images/logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -35,9 +37,45 @@ import facebook from "./images/facebook.png";
 import linkedin from './images/linkedin.png';
 import instagram from "./images/insta.png";
 import tiktok from "./images/tiktok.png";
-import checkmark from "./images/checkmark-sqaure.png"
+import checkmark from "./images/checkmark-sqaure.png";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Select from "react-select";
 
 function App() {
+  const [selectedDate, setSelectedDate] = useState(null);
+  
+  const options = [
+    { value: "Bangalore", label: "Bangalore" },
+    { value: "Hubli", label: "Hubli" },
+    { value: "Delhi", label: "Delhi" }
+  ];
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleChange = (selectedOption) => {
+    setSelectedOption(selectedOption);
+  };
+
+  
+const customStyles = {
+  control: (provided) => ({
+    ...provided,
+    color: "#FFF",
+    backgroundColor: "#434449",
+    border: "none",
+    minHeight: "50px",
+    
+
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected ? "#434449" : "#434449",
+    color: "#FFF",
+    cursor: "pointer"
+  })
+};
+
   return (
     <div className="App">
       <header className="App-header">
@@ -229,13 +267,26 @@ function App() {
                 <img src={search} alt="no image" className='serach_icon'/>
                 <input type='search' placeholder='Venue Type'></input>
               </div>
-              <div className='Date'>
-                <p>Date</p>
-                <img src={path} alt="no image"></img>
+              <div>
+                {/* <p>Date</p>
+                <img src={path} alt="no image"></img> */}
+                <DatePicker
+                  placeholderText="Date"
+                  selected={selectedDate}
+                  onChange={date => setSelectedDate(date)}
+                  dateFormat="dd/MM/yyyy"
+                  className='Date'
+                />
               </div>
-              <div className='Location'>
-                <p>Location</p>
-                <img src={path} alt="no image"></img>
+              <div>
+              <Select
+                value={selectedOption}
+                onChange={handleChange}
+                options={options}
+                placeholder="Location"
+                className='Location'
+                styles={customStyles}
+              />
               </div>
                 <button className='search_filter_tab'>Search</button>
               </div>
