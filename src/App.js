@@ -73,8 +73,93 @@ const customStyles = {
     backgroundColor: state.isSelected ? "#434449" : "#434449",
     color: "#FFF",
     cursor: "pointer"
-  })
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: "#FFF",
+  }),
+  indicatorsContainer: (provided) => ({
+    ...provided,
+    svg: {
+      fill: '#d0fd3e', // Change the fill color of the indicator container
+    },
+  }),
+  indicatorSeparator: () => ({
+    display: 'none',
+  }),
 };
+
+
+const cardData = [
+  {
+    id:1,
+    image:firstgame,
+    name:"Victory Park Sports Complex",
+    sport:"Golf",
+    place:"Downtown",
+    price:"$45 hour"
+  },
+  {
+    id:2,
+    image:second,
+    name:"Spin City Tennis Club",
+    sport:"Tennis",
+    place:"Eastside",
+    price:"$20 hour"
+  },
+  {
+    id:3,
+    image:third,
+    name:"NetBusters Basketball Arena",
+    sport:"Basketball / Rubgy",
+    place:"West End",
+    price:"$25 hour"
+  },
+  {
+    id:4,
+    image:fourth,
+    name:"Field of Dreams Soccer Fields",
+    sport:"Soccer / Basketball",
+    place:"North Shore",
+    price:"$45 hour"
+  },
+  {
+    id:5,
+    image:fifth,
+    name:"Hoops Central Basketball Courts",
+    sport:"Tennis / Basketball / Rugby / Soccer",
+    place:"DownTown",
+    price:"$15 hour"
+  },
+  {
+    id:6,
+    image:sixth,
+    name:"Handball Heaven",
+    sport:"Pools / Table Tennis / Basketball",
+    place:"DownTown",
+    price:"$15 hour"
+  },
+  {
+    id:7,
+    image:seventh,
+    name:"Ace Ping Pong Palace",
+    sport:"Tennis",
+    place:"uptoen",
+    price:"$19 hour"
+  },
+  {
+    id:8,
+    image:eight,
+    name:"The Cage Indoor Football Center",
+    sport:"Golf",
+    place:"uptown",
+    price:"$80 hour"
+  },
+]
+
+cardData.map((data , index)=>{
+  console.log(data.image)
+})
 
   return (
     <div className="App">
@@ -291,8 +376,10 @@ const customStyles = {
                 <button className='search_filter_tab'>Search</button>
               </div>
             </div>
-            <div className='eclispe_right'></div>
-            <div className='eclispe_left'></div>
+            <div className='gradient_container'>
+              <div className='eclispe_right'></div>
+              <div className='eclispe_left'></div>
+            </div>
         </div>
         <div className='filter_game'>
           <div className='allgames'>
@@ -349,85 +436,19 @@ const customStyles = {
             </div>
           </div>
           <div className='game_grid'>
-            <div className='game_card'>
-              <img className='game_image' src={firstgame} alt="#"></img>
+            {cardData.map((data , index)=>(
+            <>
+              <div className='game_card' key={index}>
+              <img className='game_image' src={data.image} alt="#"></img>
               <div className='childrens'>
-                <h1>Victory Park Sports Complex</h1>
-                <p>Golf</p>
-                <p>DownTown</p>
-                <h2 className='price'>$45 hour</h2>
+                <h1>{data.name}</h1>
+                <p>{data.sport}</p>
+                <p>{data.place}</p>
+                <h2 className='price'>{data.price}</h2>
               </div>
             </div>
-
-            <div className='game_card'>
-              <img className='game_image' src={second} alt="#"></img>
-              <div className='childrens'>
-                <h1>Spin City Tennis Club</h1>
-                <p>Tennis</p>
-                <p>Eastside</p>
-                <h2 className='price'>$20 hour</h2>
-              </div>
-            </div>
-
-            <div className='game_card'>
-              <img className='game_image' src={third} alt="#"></img>
-              <div className='childrens'>
-                <h1>NetBusters Basketball Arena</h1>
-                <p>Basketball / Rubgy</p>
-                <p>West End</p>
-                <h2 className='price'>$25 hour</h2>
-              </div>
-            </div>
-
-            <div className='game_card'>
-              <img className='game_image' src={fourth} alt="#"></img>
-              <div className='childrens'>
-                <h1>Field of Dreams Soccer Fields</h1>
-                <p>Soccer / Basketball</p>
-                <p>North Shore</p>
-                <h2 className='price'>$45 hour</h2>
-              </div>
-            </div>
-
-            <div className='game_card'>
-              <img className='game_image' src={fifth} alt="#"></img>
-              <div className='childrens'>
-                <h1>Hoops Central Basketball Courts</h1>
-                <p>Tennis / Basketball / Rugby / Soccer</p>
-                <p>DownTown</p>
-                <h2 className='price'>$15 hour</h2>
-              </div>
-            </div>
-
-            <div className='game_card'>
-              <img className='game_image' src={sixth} alt="#"></img>
-              <div className='childrens'>
-                <h1>Handball Heaven</h1>
-                <p>Pools / Table Tennis / Basketball</p>
-                <p>DownTown</p>
-                <h2 className='price'>$15 hour</h2>
-              </div>
-            </div>
-
-            <div className='game_card'>
-              <img className='game_image' src={seventh} alt="#"></img>
-              <div className='childrens'>
-                <h1>Ace Ping Pong Palace</h1>
-                <p>Tennis</p>
-                <p>uptoen</p>
-                <h2 className='price'>$19 hour</h2>
-              </div>
-            </div>
-
-            <div className='game_card'>
-              <img className='game_image' src={eight} alt="#"></img>
-              <div className='childrens'>
-                <h1>The Cage Indoor Football Center</h1>
-                <p>Golf</p>
-                <p>uptown</p>
-                <h2 className='price'>$80 hour</h2>
-              </div>
-            </div>
+            </>
+          ))}
           </div>
           <div className='divider'></div>
 
